@@ -15,7 +15,7 @@ J = (1 / m) * sum(-y .* log(h) - (1 - y) .* log(1 - h));
 J = J + (lambda / (2 * m) * sum(theta(2:length(theta)) .^ 2));
 
 %basic gradient
-grad = (1/m) * (h-y)' * X;
+grad(1:length(grad)) = (1 / m) * ((h - y)' * X);
 
 %add regularization for all but bias
 grad(2:length(grad)) = grad(2:length(grad))' + (lambda / m) * (theta(2:length(theta)));
